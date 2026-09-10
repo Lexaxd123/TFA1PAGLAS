@@ -1,59 +1,31 @@
 <?php
 
-use CodeIgniter\Boot;
-use Config\Paths;
-
-/*
- *---------------------------------------------------------------
- * CHECK PHP VERSION
- *---------------------------------------------------------------
- */
-
-$minPhpVersion = '8.2'; // If you update this, don't forget to update `spark`.
-if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
-    $message = sprintf(
-        'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
-        $minPhpVersion,
-        PHP_VERSION,
-    );
-
-    header('HTTP/1.1 503 Service Unavailable.', true, 503);
-    echo $message;
-
-    exit(1);
-}
-
-/*
- *---------------------------------------------------------------
- * SET THE CURRENT DIRECTORY
- *---------------------------------------------------------------
- */
+// Force CodeIgniter into development mode to show exact error stack traces
+$_SERVER['CI_ENVIRONMENT'] = 'development';
+putenv('CI_ENVIRONMENT=development');
 
 // Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 
 // Ensure the current directory is pointing to the front controller's directory
-if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
-    chdir(FCPATH);
-}
+chdir(FCPATH);
 
 /*
  *---------------------------------------------------------------
  * BOOTSTRAP THE APPLICATION
  *---------------------------------------------------------------
- * This process sets up the path constants, loads and registers
- * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
+ * This process sets up the project's codebase, defines constants,
+ * and prepares the framework for handling requests.
  */
 
-// LOAD OUR PATHS CONFIG FILE
+// Load our paths config file
 // This is the line that might need to be changed, depending on your folder structure.
 require FCPATH . '../app/Config/Paths.php';
 // ^^^ Change this line if you move your application folder
 
-$paths = new Paths();
+$paths = new Config\Paths();
 
-// LOAD THE FRAMEWORK BOOTSTRAP FILE
+// Location of the framework bootstrap file.
 require $paths->systemDirectory . '/Boot.php';
 
-exit(Boot::bootWeb($paths));
+exit(CodeIgniter\Boot::bootWeb($paths));
