@@ -88,9 +88,9 @@
     }
 </style>
 
-<nav class="main-nav">
-    <a href="<?= base_url('/') ?>" class="nav-btn">🏠 Home</a>
-    <a href="<?= base_url('about') ?>" class="nav-btn">ℹ️ About</a>
-    <a href="<?= base_url('customers') ?>" class="nav-btn">👥 Customer Accounts</a>
-    <a href="<?= base_url('users') ?>" class="nav-btn">🔐 User Accounts</a>
+<nav class="nav-container">
+    <a href="<?= site_url('/') ?>" class="nav-btn">🏠 Home</a>
+    <a href="<?= site_url('pages/about') ?>" class="nav-btn">ℹ️ About</a>
+    <a href="<?= site_url('customers') ?>" class="nav-btn">👥 Customer Accounts</a>
+    <a href="<?= site_url('users') ?>" class="nav-btn">🔐 User Accounts</a>
 </nav>
