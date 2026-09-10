@@ -2,8 +2,16 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
+/**
+ * @var RouteCollection $routes
+ */
 
-$routes->get('/pages', 'Pages::index');
-$routes->get('/about', 'Pages::about');
+// Landing & About Pages
+$routes->get('/', 'Pages::index');
+$routes->get('about', 'Pages::about');
+
+// Customer Accounts Page
+$routes->get('customers', 'Customers::index');
+
+// User Accounts Page
+$routes->get('users', 'Users::index');

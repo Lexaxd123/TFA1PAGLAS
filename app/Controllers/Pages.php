@@ -1,25 +1,18 @@
 <?php
+
 namespace App\Controllers;
 
-class Pages extends BaseController {
-    public function index(){
-        $data = array(
-            'title' => 'Index Page',
-            'name' => 'Joseph'
-        );
-
-        return view('partials/header', $data)
-            .view('index', $data)
-            .view('partials/footer');
+class Pages extends BaseController
+{
+    public function index(): string
+    {
+        // Loads app/Views/templates/nav.php and app/Views/pages/home.php
+        return view('templates/nav') . view('pages/home');
     }
 
-    public function about() {
-        $data = array(
-            'title' => 'About Page'
-        );
-        return view('partials/header', $data)
-            .view('about')
-            .view('partials/footer');
+    public function about(): string
+    {
+        // Loads app/Views/templates/nav.php and app/Views/pages/about.php
+        return view('templates/nav') . view('pages/about');
     }
 }
-?>
