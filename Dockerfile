@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    && docker-php-ext-configure intl \
     && docker-php-ext-install intl opcache mysqli pdo_mysql
 
 # Enable Apache mod_rewrite for clean CodeIgniter routes
