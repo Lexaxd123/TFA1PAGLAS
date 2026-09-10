@@ -6,7 +6,12 @@ use CodeIgniter\Config\BaseConfig;
 
 class App extends BaseConfig
 {
-    public string $baseURL = DYNAMIC_BASE_URL;
+    /**
+     * --------------------------------------------------------------------------
+     * Base Site URL
+     * --------------------------------------------------------------------------
+     */
+    public string $baseURL = 'https://morrispaglas-pos.onrender.com/';
 
     public array $allowedHostnames = [];
 
